@@ -25,3 +25,21 @@ pow2days <- powdata %>%
 rm("powdata")
 
 ### Creating the plot image
+png("plot4.png", 480, 480)
+par(mfrow = c(2, 2))
+with(pow2days, {
+  plot(Global_active_power ~ datetime, data = pow2days, type = "l",
+       xlab = "", ylab = "Global Active Power")
+  
+  plot(Voltage ~ datetime, data = pow2days, type = "l")
+  
+  plot(Sub_metering_1 ~ datetime, data = pow2days, type = "l",
+       xlab = "", ylab = "Energy sub metering")
+  lines(Sub_metering_2 ~ datetime, data = pow2days, col = "red")
+  lines(Sub_metering_3 ~ datetime, data = pow2days, col = "blue")
+  legend("topright", col=c("black", "red", "blue"), lty=c(1, 1, 1), bty="n",
+         legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+  
+  plot(Global_reactive_power ~ datetime, data = pow2days, type = "l")
+})
+dev.off()
