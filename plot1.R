@@ -25,3 +25,9 @@ pow2days <- powdata %>%
 rm("powdata")
 
 ### Creating the plot image
+png("plot1.png", 480, 480)
+hist(pow2days$Global_active_power, col="red", 
+     main = "Global Active Power",
+     xlab = "Global Active Power (kilowatts)")
+dev.off()
+
