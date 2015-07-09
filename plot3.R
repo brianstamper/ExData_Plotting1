@@ -25,3 +25,11 @@ pow2days <- powdata %>%
 rm("powdata")
 
 ### Creating the plot image
+png("plot3.png", 480, 480)
+plot(Sub_metering_1 ~ datetime, data = pow2days, type = "l",
+     xlab = "", ylab = "Energy sub metering")
+lines(Sub_metering_2 ~ datetime, data = pow2days, col = "red")
+lines(Sub_metering_3 ~ datetime, data = pow2days, col = "blue")
+legend("topright", col=c("black", "red", "blue"), lty=c(1, 1, 1),
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+dev.off()
