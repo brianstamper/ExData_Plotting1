@@ -3,6 +3,15 @@
 # It assumes that household_power_consumption.txt is in the working directory
 # and that the packages dplyr and lubridate are installed.
 
+# Download the data if it hasn't been already
+if (!file.exists("household_power_consumption.txt")) {
+  url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+  destfile <- "household_power_consumption.zip"
+  download.file(url, destfile, method = "curl")
+  downloadDate <- date()
+  unzip("household_power_consumption.zip")
+}
+
 # We will use dplyr to work with our data frame and lubridate to parse dates
 library(dplyr)
 library(lubridate)
